@@ -1,8 +1,10 @@
-from sqlalchemy import Column, Integer, String, DateTime, Float
-from sqlalchemy.ext.declarative import declarative_base
-import datetime
 
-Base = declarative_base()
+from typing import Type
+
+from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base: Type = declarative_base()
 
 class Place(Base):
     __tablename__ = "places"
