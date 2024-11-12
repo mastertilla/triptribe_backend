@@ -1,0 +1,43 @@
+services:
+  fast_api_chat_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chat-service
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
+    entrypoint: ["python", "-m", "main"]
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongo-data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-server
+    ports:
+      - "5672:5672"       # Default RabbitMQ port
+      - "15672:15672"     # RabbitMQ Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: user      # Default username
+      RABBITMQ_DEFAULT_PASS: password  # Default password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+volumes:
+  mongo-data:
+  rabbitmq_data:
+    driver: local
