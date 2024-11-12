@@ -28,7 +28,7 @@ RUN  apt-get update && apt-get upgrade -y && apt-get install -y --no-install-rec
 
 WORKDIR /app
 COPY --from=builder /app/.venv/ /app/.venv
-COPY . /app
+COPY app/ /app
 
 EXPOSE 8000
 
