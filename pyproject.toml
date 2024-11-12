@@ -10,12 +10,15 @@ package-mode = false
 python = "^3.12"
 fastapi = {extras = ["all"], version = "^0.115.4"}
 sqlalchemy = "^2.0.36"
+pydantic = "^2.9.2"
+pydantic-settings = "^2.6.1"
 
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.7.1"
 mypy = "^1.13.0"
 pre-commit = "^4.0.1"
+ggshield = "^1.33.0"
 
 [tool.mypy]
 ignore_missing_imports = true
