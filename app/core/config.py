@@ -1,16 +1,18 @@
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
+load_dotenv()
 
 class APISettings(BaseSettings):
-    api_key: str
-    api_key_secret: str
+    API_KEY: str = 'test'
+    API_KEY_SECRET: str = 'test'
 
 class DBSettings(BaseSettings):
-    host: str
-    port: int
-    userame: str
-    password: str
-    database: str
+    HOST: str
+    PORT: int
+    USERNAME: str
+    PASSWORD: str
+    DATABASE: str
 
 API_SETTINGS = APISettings()
 DB_SETTINGS = DBSettings()
