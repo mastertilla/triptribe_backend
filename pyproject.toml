@@ -35,7 +35,7 @@ ignore = ["B008"] # Avoid getting alerts when running callables as default for f
 line-length = 120
 exclude = [
     ".git", ".ipynb_checkpoints", ".mypy_cache", ".pyenv", ".pytest_cache", ".ruff_cache",
-    ".venv", "_pypackages_", ".idea", "_pycache_", "htmlcov", "dist", '/prompts/', '*prompt.py'
+    ".venv", "_pypackages_", ".idea", "_pycache_", "htmlcov", "dist", "alembic/"
 ]
 respect-gitignore = true
 
