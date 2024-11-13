@@ -14,7 +14,7 @@ class PlaceCreate(BaseModel):
 
 class PlaceUpdate(BaseModel):
     name: Optional[str]
-    rating: Optional[str]
+    rating: Optional[float]
 
 class PlaceInDB(BaseModel):
     id: int

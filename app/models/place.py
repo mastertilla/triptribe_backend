@@ -1,7 +1,7 @@
 
 from typing import Type
 
-from sqlalchemy import Column, DateTime, Float, Integer, String
+from sqlalchemy import Column, DateTime, Float, Integer, String, func
 from sqlalchemy.ext.declarative import declarative_base
 
 Base: Type = declarative_base()
@@ -19,5 +19,5 @@ class Place(Base):
 
     rating = Column(Float, nullable=True)
 
-    created_at = Column(DateTime, nullable=False)
-    updated_at = Column(DateTime, nullable=False)
+    created_at = Column(DateTime, nullable=False, default=func.now())
+    updated_at = Column(DateTime, nullable=False, default=func.now(), onupdate=func.now())
