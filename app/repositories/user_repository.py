@@ -9,6 +9,12 @@ class UserRepository:
     def get_user(self, db: Session, user_id: int) -> User:
         return db.query(User).filter(User.id == user_id).first()
 
+    def get_user_by_email(self, db: Session, user_email: str) -> User:
+        return db.query(User).filter(User.user_email == user_email).first()
+
+    def get_all_users(self, db: Session, skip: int = 0, limit: int = 20) -> list[User]:
+        return db.query(User).offset(skip).limit(limit).all()
+
     def create_user(self, db: Session, user: UserCreate) -> User:
         db_user = User(**user.model_dump())
         db.add(db_user)
@@ -37,9 +43,3 @@ class UserRepository:
             logger.info(f"User with id {user_id} deleted")
         else:
             logger.error(f"User with id {user_id} not found")
-
-    def get_user_by_email(self, db: Session, user_email: str) -> User:
-        return db.query(User).filter(User.user_email == user_email).first()
-
-    def get_all_users(self, db: Session, skip: int = 0, limit: int = 20) -> list[User]:
-        return db.query(User).offset(skip).limit(limit).all()
