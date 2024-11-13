@@ -1,12 +1,10 @@
-from typing import Type
 
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, func
-from sqlalchemy.ext.declarative import declarative_base
 
-Base: Type = declarative_base()
+from app.models.app_base import Base
 
 
-class PlaceComments(Base):
+class PlaceComment(Base):
     __tablename__ = 'table_comments'
 
     id = Column(Integer, primary_key=True, index=True)
